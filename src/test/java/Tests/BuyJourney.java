@@ -1,9 +1,12 @@
 package Tests;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageObjects.ShoppingCartPage;
 import pageObjects.HomePage;
 import pageObjects.SignInPage;
@@ -34,7 +37,10 @@ public class BuyJourney {
      */
     @Test @Ignore
     public void selectItemFromHomepage() {
-
+        WebElement blouse = driver.findElement(By.cssSelector("[alt='Blouse']"));
+        blouse.click();
+        Assert.assertEquals("Blouse", driver.getTitle());
+        driver.quit();
     }
 
     /** Add product to Cart from homepage
@@ -44,6 +50,12 @@ public class BuyJourney {
      */
     @Test @Ignore
     public void addProductToCartFromHomepage(){
+        WebElement blouse = driver.findElement(By.cssSelector("[alt='Blouse']"));
+        blouse.click();
+        WebElement add = driver.findElement(By.cssSelector("div.add"));
+        add.click();
+        WebElement cart = driver.findElement(By.id("myModelLabel"));
+        driver.quit();
 
     }
 

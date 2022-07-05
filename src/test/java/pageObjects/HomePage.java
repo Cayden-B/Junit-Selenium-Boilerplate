@@ -12,7 +12,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
     private static String URL = "http://18.168.19.161/";
-    private static final By SIGN_IN_BUTTON = By.cssSelector("a.login");
+    private static final By SIGN_IN_BUTTON = By.cssSelector("#_desktop_user_info > div > a > span");
 
    public void goTo(){
         driver.get(URL);

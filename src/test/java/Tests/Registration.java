@@ -44,8 +44,8 @@ public class Registration {
     @Test
     public void registerAlreadyRegistered(){
         homepage.navigateToSignInPage();
-        signInPage.enterEmailAddress("test@test.com");
         signInPage.clickCreateAnAccount();
+        signInPage.enterEmailAddress("test@test.com");
         signInPage.alreadyRegisteredAlertPresent();
     }
 

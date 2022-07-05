@@ -15,7 +15,7 @@ public class SignInPage extends BasePage {
     }
 
     private static final By EMAIL_ADDRESS_INPUT_BOX = By.cssSelector("input#email_create");
-    private static final By CREATE_NEW_ACCOUNT_BUTTON = By.cssSelector("button#SubmitCreate");
+    private static final By CREATE_NEW_ACCOUNT_BUTTON = By.cssSelector("#content > div > a");
     private static final By ALREADY_REGISTERED_ALERT = By.cssSelector("div#create_account_error");
 
     public void enterEmailAddress(String emailAddress){
