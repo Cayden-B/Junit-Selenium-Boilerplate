@@ -35,7 +35,7 @@ public class Registration {
 
 
     /** Cannot register if user Already Registered
-     * Pre-Conditions - Must have Email address of user already registered
+     * Pre-Conditions - Must have Email address of user already registered (mr,cdot,bdot,cdotbdot@gmail.com, Password)
      * Navigate to Sign In Screen
      * Enter E mail Address
      * Click Create Account
@@ -45,8 +45,13 @@ public class Registration {
     public void registerAlreadyRegistered(){
         homepage.navigateToSignInPage();
         signInPage.clickCreateAnAccount();
-        signInPage.enterEmailAddress("test@test.com");
+        signInPage.enterFirstName("cdot");
+        signInPage.enterLastName("bdot");
+        signInPage.enterEmailAddress("cdotbdot@gmail.com");
+        signInPage.enterPassWord("Password");
+        signInPage.saveAccount();
         signInPage.alreadyRegisteredAlertPresent();
+//        driver.quit();
     }
 
 
@@ -59,9 +64,16 @@ public class Registration {
      * Click Register
      * Check My Account Page is Displayed
      */
-    @Test @Ignore
+    @Test
     public void registerAsNewUser(){
-
+        homepage.navigateToSignInPage();
+        signInPage.clickCreateAnAccount();
+        signInPage.enterFirstName("cdot");
+        signInPage.enterLastName("bdot");
+        signInPage.enterEmailAddress("Chris"+Math.random()*110+2+"@Gmail.com");
+        signInPage.enterPassWord("Password");
+        signInPage.saveAccount();
+        driver.quit();
     }
 
 
@@ -75,7 +87,7 @@ public class Registration {
     @AfterClass
     public static void mainTearDown(){
         // Uncomment this when just running individual tests in this file.
-        //driver.quit();
+//        driver.quit();
     }
 
 
