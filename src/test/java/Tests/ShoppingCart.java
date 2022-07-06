@@ -3,7 +3,9 @@ package Tests;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageObjects.HomePage;
 import pageObjects.ShoppingCartPage;
 
@@ -19,23 +21,32 @@ public class ShoppingCart {
     private ShoppingCartPage basketpage = new ShoppingCartPage(driver);
 
     @Before
-    public void individualSetUp(){
+    public void individualSetUp() {
         homepage.goTo();
     }
 
-    /**Remove item from shopping cart
+    /**
+     * Remove item from shopping cart
      * Pre-Condition - Item must be in basket
      * Navigate to basket
      * Click Delete
      * Verify Item is removed from Basket
      * Extension - verify pricing and totals are updated to reflect accurately
      */
-    @Test @Ignore
-    public void removeItemFromShoppingBasket(){
-
+    @Test
+    public void removeItemFromShoppingBasket() {
+        WebElement blouse = driver.findElement(By.cssSelector("[alt='Blouse']"));
+        blouse.click();
+        WebElement add = driver.findElement(By.cssSelector("div.add"));
+        add.click();
+        basketpage.purchaseSuccessful();
+        basketpage.closePage();
+        basketpage.deleteItem();
+//        driver.quit();
     }
 
-    /**Increase quantity of product
+    /**
+     * Increase quantity of product
      * Pre-Condition - Must have one item in basket
      * Navigate to basket
      * Increase quantity of product
@@ -43,23 +54,26 @@ public class ShoppingCart {
      * Verify Product counter (Top right) is updated
      * Extension - verify pricing and totals are updated to reflect accurately
      */
-    @Test @Ignore
-    public void increaseQuantityOfProductInBasket(){
+    @Test
+    public void increaseQuantityOfProductInBasket() {
 
     }
 
-    /** Proceed to checkout - not signed in
+    /**
+     * Proceed to checkout - not signed in
      * Pre-Condition - Must have one item in basket && not be signed in
      * Navigate to basket
      * Click proceed to checkout
      * Verify sign in page displayed
      */
-    @Test @Ignore
-    public void proceedToCheckoutNotLoggedIn(){
+    @Test
+//    @Ignore
+    public void proceedToCheckoutNotLoggedIn() {
 
     }
 
-    /** Proceed to checkout - signed in
+    /**
+     * Proceed to checkout - signed in
      * Pre-Condition - Must have one item in basket && be signed in
      * Navigate to basket
      * Click proceed to checkout
@@ -73,11 +87,11 @@ public class ShoppingCart {
      * Confirm order
      * Order confirmation page is displayed
      */
-    @Test @Ignore
-    public void proceedToCheckoutAndBuyLoggedIn(){
+    @Test
+    @Ignore
+    public void proceedToCheckoutAndBuyLoggedIn() {
 
     }
-
 
 
 }

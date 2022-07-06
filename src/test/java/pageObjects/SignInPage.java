@@ -24,6 +24,8 @@ public class SignInPage extends BasePage {
     private static final By ALREADY_REGISTERED_ALERT = By.cssSelector("div.form-group.row.has-error");
     private static final By SAVE = By.cssSelector("#customer-form > footer > button");
     private static final By SAVE2 = By.cssSelector("#login-form > footer > button");
+    private static final By authFailed = By.cssSelector(".help-block > .alert");
+
 
 
     public void enterEmailAddress(String emailAddress) {
@@ -63,6 +65,8 @@ public class SignInPage extends BasePage {
         WebElement alertBox = driver.findElement(ALREADY_REGISTERED_ALERT);
         Assert.assertTrue(elementIsVisible(alertBox));
     }
+
+
 
 
 }

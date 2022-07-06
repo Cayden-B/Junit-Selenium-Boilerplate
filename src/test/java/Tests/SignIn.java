@@ -38,13 +38,12 @@ public class SignIn {
      * Verify My Account is Displayed
      */
     @Test
-    @Ignore
     public void signInAsRegisteredUser() {
         homepage.navigateToSignInPage();
         signInPage.enterEmailAddress2("cdotbdot@gmail.com");
         signInPage.enterPassWord2("Password");
         signInPage.saveAccount2();
-
+//        driver.quit();
     }
 
     /**
@@ -57,9 +56,15 @@ public class SignIn {
      * Verify Error Message is Displayed
      */
     @Test
-    @Ignore
     public void signInAsUnRegisteredUser() {
-
+        homepage.navigateToSignInPage();
+        signInPage.enterEmailAddress2("cbotdot@gmail.com");
+        signInPage.enterPassWord2("Password");
+        signInPage.saveAccount2();
+        WebElement authText = driver.findElement(By.cssSelector(".help-block .alert"));
+        String actual = authText.getText();
+        Assert.assertEquals("Authentication failed.", actual);
+//        driver.quit();
     }
 
     /**

@@ -25,42 +25,44 @@ public class BuyJourney {
     private SignInPage signInPage = new SignInPage(driver);
 
     @Before
-    public void individualSetUp(){
+    public void individualSetUp() {
         homepage.goTo();
     }
 
-    /**Select Item from homepage, takes to product page
+    /**
+     * Select Item from homepage, takes to product page
      * On homepage
      * Hover over a product's image
      * Click More Button
      * Verify product page is displayed
      */
-    @Test @Ignore
+    @Test
+
     public void selectItemFromHomepage() {
         WebElement blouse = driver.findElement(By.cssSelector("[alt='Blouse']"));
         blouse.click();
         Assert.assertEquals("Blouse", driver.getTitle());
-        driver.quit();
     }
 
-    /** Add product to Cart from homepage
+    /**
+     * Add product to Cart from homepage
      * Hover over product from homepage
      * Click add to cart
      * Verify added to cart
      */
-    @Test @Ignore
-    public void addProductToCartFromHomepage(){
+    @Test
+    public void addProductToCartFromHomepage() {
         WebElement blouse = driver.findElement(By.cssSelector("[alt='Blouse']"));
         blouse.click();
         WebElement add = driver.findElement(By.cssSelector("div.add"));
         add.click();
-        WebElement cart = driver.findElement(By.id("myModelLabel"));
-        cart.click();
-        driver.quit();
-
+        basketpage.purchaseSuccessful();
+//        driver.quit();
     }
 
-    /** Add product to cart from Product page
+
+    /**
+     * Add product to cart from Product page
      * On product page
      * Select Quantity
      * Select Size
@@ -68,8 +70,18 @@ public class BuyJourney {
      * Click add to cart
      * Verify Added to Cart
      */
-    @Test @Ignore
-    public void addProductToCartFromProductPage(){
+    @Test
 
+    public void addProductToCartFromProductPage() {
+        WebElement blouse = driver.findElement(By.cssSelector("[alt='Blouse']"));
+        blouse.click();
+        WebElement quantity = driver.findElement(By.id("quantity_wanted"));
+        quantity.sendKeys("0");
+        WebElement colour = driver.findElement(By.cssSelector("[value='8']"));
+        colour.click();
+        WebElement add = driver.findElement(By.cssSelector("div.add"));
+        add.click();
+        basketpage.purchaseSuccessful();
+//        driver.quit();
     }
 }
