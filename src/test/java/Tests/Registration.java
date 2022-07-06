@@ -29,12 +29,13 @@ public class Registration {
      * This should make sure we are on the correct page, i.e. set up each test case so we can be sure that they run
      */
     @Before
-    public void individualSetUp(){
+    public void individualSetUp() {
         homepage.goTo();
     }
 
 
-    /** Cannot register if user Already Registered
+    /**
+     * Cannot register if user Already Registered
      * Pre-Conditions - Must have Email address of user already registered (mr,cdot,bdot,cdotbdot@gmail.com, Password)
      * Navigate to Sign In Screen
      * Enter E mail Address
@@ -42,7 +43,7 @@ public class Registration {
      * Verify error message displayed
      */
     @Test
-    public void registerAlreadyRegistered(){
+    public void registerAlreadyRegistered() {
         homepage.navigateToSignInPage();
         signInPage.clickCreateAnAccount();
         signInPage.enterFirstName("cdot");
@@ -51,7 +52,7 @@ public class Registration {
         signInPage.enterPassWord("Password");
         signInPage.saveAccount();
         signInPage.alreadyRegisteredAlertPresent();
-//        driver.quit();
+//       driver.quit();
     }
 
 
@@ -65,29 +66,27 @@ public class Registration {
      * Check My Account Page is Displayed
      */
     @Test
-    public void registerAsNewUser(){
+    public void registerAsNewUser() {
         homepage.navigateToSignInPage();
         signInPage.clickCreateAnAccount();
         signInPage.enterFirstName("cdot");
         signInPage.enterLastName("bdot");
-        signInPage.enterEmailAddress("Chris"+Math.random()*110+2+"@Gmail.com");
+        signInPage.enterEmailAddress("Chris" + Math.random() * 110 + 2 + "@Gmail.com");
         signInPage.enterPassWord("Password");
         signInPage.saveAccount();
-        driver.quit();
+        //  driver.quit();
     }
 
 
-
-
     @After
-    public void individualTearDown(){
+    public void individualTearDown() {
 
     }
 
     @AfterClass
-    public static void mainTearDown(){
+    public static void mainTearDown() {
         // Uncomment this when just running individual tests in this file.
-//        driver.quit();
+        driver.quit();
     }
 
 

@@ -1,9 +1,11 @@
 package Tests;
 
-import org.junit.Before;
+import org.junit.*;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageObjects.ShoppingCartPage;
 import pageObjects.HomePage;
 import pageObjects.SignInPage;
@@ -17,15 +19,17 @@ public class SignIn {
 
     public static WebDriver driver = driverFactory.getDriver();
     private HomePage homepage = new HomePage(driver);
+    private SignInPage signInPage = new SignInPage(driver);
 
 
     @Before
-    public void individualSetUp(){
+    public void individualSetUp() {
         homepage.goTo();
     }
 
 
-    /** Sign in as Registered User
+    /**
+     * Sign in as Registered User
      * Pre-Conditions - Must have signIn information for a registered user
      * Navigate to Sign In Page
      * Fill in Email Address
@@ -33,12 +37,18 @@ public class SignIn {
      * Click Sign In
      * Verify My Account is Displayed
      */
-    @Test @Ignore
-    public void signInAsRegisteredUser(){
+    @Test
+    @Ignore
+    public void signInAsRegisteredUser() {
+        homepage.navigateToSignInPage();
+        signInPage.enterEmailAddress2("cdotbdot@gmail.com");
+        signInPage.enterPassWord2("Password");
+        signInPage.saveAccount2();
 
     }
 
-    /**Cannot sign in as unregistered customer
+    /**
+     * Cannot sign in as unregistered customer
      * Pre-Conditions - Must have Email address and Password of unregistered customer
      * Navigate to Sign in Page
      * Fill in Email Address
@@ -46,12 +56,14 @@ public class SignIn {
      * Click Sign in
      * Verify Error Message is Displayed
      */
-    @Test @Ignore
-    public void signInAsUnRegisteredUser(){
+    @Test
+    @Ignore
+    public void signInAsUnRegisteredUser() {
 
     }
 
-    /** Forgotten Password
+    /**
+     * Forgotten Password
      * Pre-Conditions - Must have signIn information for a registered user
      * Navigate to Sign In Page
      * Click Forgotten Password
@@ -59,19 +71,22 @@ public class SignIn {
      * Click retrieve password
      * Confirmation message displayed
      */
-    @Test @Ignore
-    public void forgottenPassword(){
+    @Test
+    @Ignore
+    public void forgottenPassword() {
 
     }
 
-    /**Able to sign out
+    /**
+     * Able to sign out
      * Pre-Conditions - Must have signIn information for a registered user
      * Navigate to Sign In Page
      * Click sign out
      * Verify customer signed out
      */
-    @Test @Ignore
-    public void signOut(){
+    @Test
+    @Ignore
+    public void signOut() {
 
     }
 }

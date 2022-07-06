@@ -55,6 +55,7 @@ public class BuyJourney {
         WebElement add = driver.findElement(By.cssSelector("div.add"));
         add.click();
         WebElement cart = driver.findElement(By.id("myModelLabel"));
+        cart.click();
         driver.quit();
 
     }
